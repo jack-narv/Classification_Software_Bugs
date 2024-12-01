@@ -156,5 +156,14 @@ The bug_commit_dataset_with_types file is the dataset with the 20 thousand bug r
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
+The CLASSIFICATION_SOFTWARE_BUGS_ML.ipynb notebook loads the bug_commit_dataset_with_types dataset and works on outlier processing,
+logarithmic transformation, normalization, and training the RandomForestClassifier and XGBoost models.
 
+------------------------------------------------------------------------------------------------------------------------------------
+The test.py file does the following:
 
+  - Loads a pre-trained machine learning model (bug_classifier_model.pkl or bug_type_classifier_model.pkl).
+  - Allows users to upload Python files for analysis.
+  - Analyzes the file's content to compute key metrics such as complexity, number of lines, and number of functions.
+  - Uses these metrics as features to predict whether the file contains a bug.
+  - Displays the results in an interactive and user-friendly interface.
