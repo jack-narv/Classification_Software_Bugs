@@ -150,3 +150,11 @@ Orchestrates the entire workflow.
     - Training and evaluating the machine learning model.
   - Outputs evaluation metrics and saves the final model.
 
+------------------------------------------------------------------------------------------------------------------------------------
+
+The bug_commit_dataset_with_types file is the dataset with the 20 thousand bug records that we are going to work with in the collab.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
