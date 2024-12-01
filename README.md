@@ -63,7 +63,7 @@ Effectiveness of preprocessing techniques like outlier handling and normalizatio
 
   - Visualizations: Includes histograms, confusion matrices, and performance graphs to summarize results.
 
-FLOW DESCRIPTION
+------------------------------------------------------------- FLOW DESCRIPTION --------------------------------------------------------------------------
 
 1. fetch_balanced_commits_from_multiple_repos
 Collects commit data from multiple GitHub repositories and ensures balanced sampling of commits across bug types.
