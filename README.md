@@ -1,7 +1,7 @@
 # Classification_Software_Bugs
 Classification of Software Bugs Using Supervised Learning Models
 
-This project implements a pipeline for software bug classification using machine learning models, combining data collection, preprocessing, feature engineering, and model training. Below is an overview of the workflow:
+This project implements a pipeline for software bug classification using machine learning models, combining data collection, preprocessing, feature engineering, and model training. In the main.py file we can find the following:
 
 1. Data Collection
   - GitHub API Integration: Public repositories (python/cpython, pandas-dev/pandas, etc.) are queried using the GitHub API to retrieve commit data.
