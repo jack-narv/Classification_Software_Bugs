@@ -9,13 +9,13 @@ This project implements a pipeline for software bug classification using machine
     - The script parses commit messages and associated files.
     - Extracts Python code files for static analysis.
     - Features are generated using libraries like Radon (for complexity metrics) and Flake8 (for linting issues).
-    - 
+      
 2. Feature Extraction
 For each code file, key metrics are computed:
   - Maintainability Index: Evaluates code maintainability.
   - Cyclomatic Complexity: Measures the complexity of control flow.
   - Code Statistics: Includes number of lines, functions, classes, comments, and dependencies.
-  - 
+    
 Bug types are classified from commit messages and code content using regex and static analysis tools.
 
 3. Data Preprocessing
