@@ -63,4 +63,90 @@ Effectiveness of preprocessing techniques like outlier handling and normalizatio
 
   - Visualizations: Includes histograms, confusion matrices, and performance graphs to summarize results.
 
+FLOW DESCRIPTION
+
+1. fetch_balanced_commits_from_multiple_repos
+Collects commit data from multiple GitHub repositories and ensures balanced sampling of commits across bug types.
+
+  - Connects to the GitHub API to fetch commits from specified repositories.
+  - Extracts Python files from each commit for further analysis.
+  - Ensures the dataset has an equal representation of different bug types by limiting the number of commits for each bug type.
+
+2. analyze_code
+Analyzes the content of Python files in commits to extract code metrics and identify potential bugs.
+
+  - Parses Python code using ast to compute metrics like:
+    - Maintainability Index
+    - Cyclomatic Complexity
+    - Number of functions, classes, comments, and lines
+  - Uses Radon and Flake8 for static code analysis.
+  - Identifies potential bug types (e.g., SyntaxError, TypeError) using regex and static analysis.
+  - Output: Returns a dictionary of code metrics and the detected bug type (if any).
+    
+3. process_commits
+Aggregates metrics and bug types for all analyzed commits into a structured dataset.
+
+  - Iterates through commits and applies analyze_code to each relevant file.
+  - Compiles results into a DataFrame with columns for code metrics and bug types.
+  - Handles errors in code analysis by recording issues in a separate error log.
+    
+4. process_outliers
+Identifies and handles outliers in numerical variables using the Interquartile Range (IQR) method.
+
+  - Calculates the lower and upper bounds based on IQR.
+  - Filters outliers from the dataset or returns the bounds for later imputation.
+  - Output: A filtered DataFrame with outlier thresholds.
+    
+5. variable_logarithm_complexity
+Applies logarithmic transformation to the complexity variable to reduce skewness.
+
+  - Transforms the complexity variable using log1p to handle zero values safely.
+  - Adds a new column (complexity_log) to the dataset.
+    
+6. imput_outliers
+Replaces outlier values with the median of the respective variable.
+
+  - Uses the lower and upper bounds calculated by process_outliers.
+  - Imputes values outside these bounds with the variable's median.
+    
+7. balance_dataset
+Balances the dataset by addressing class imbalances.
+
+  - SMOTE: Generates synthetic samples for underrepresented classes.
+  - Undersampling: Reduces the number of samples in overrepresented classes.
+  - Returns a balanced dataset ready for training.
+    
+8. normalize_features
+Standardizes numerical variables for consistent scaling.
+
+  - Uses StandardScaler to normalize the features.
+  - Ensures the dataset is scaled for optimal model performance.
+    
+9. hyperparameter_tuning
+Optimizes model hyperparameters using RandomizedSearchCV.
+
+  - Defines a range of hyperparameters for the machine learning model (e.g., XGBoost, RandomForest).
+  - Uses cross-validation to find the best combination of hyperparameters.
+  - Returns the best model configuration.
+    
+10. train_model
+Trains the machine learning model and evaluates its performance.
+
+  - Handles preprocessing, including:
+    - Missing value imputation.
+    - Data balancing.
+    - Normalization.
+  - Splits the dataset into training and testing sets.
+  - Trains the model using the optimized hyperparameters.
+  - Evaluates the model with metrics like accuracy, precision, recall, F1-score, and confusion matrix.
+  - Saves the trained model for deployment or further analysis.
+    
+11. data_pipeline
+Orchestrates the entire workflow.
+
+  - Calls the tasks in sequence:
+    - Fetching and analyzing commits.
+    - Preprocessing and balancing the dataset.
+    - Training and evaluating the machine learning model.
+  - Outputs evaluation metrics and saves the final model.
 
