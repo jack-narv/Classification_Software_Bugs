@@ -167,3 +167,7 @@ The test.py file does the following:
   - Analyzes the file's content to compute key metrics such as complexity, number of lines, and number of functions.
   - Uses these metrics as features to predict whether the file contains a bug.
   - Displays the results in an interactive and user-friendly interface.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+The link to the lightning study is as follows: https://lightning.ai/live-session/94790b8f-dca8-4393-9a00-5ec84b0ebbf4
